@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 
 from rul.peewee import PeeWeeMessage
 from rul.sqlalchemy import AlchemyMessage
+from rul.json import JSONMessage
 
 
 class AbstractMessageFactory(ABC):
@@ -41,4 +42,15 @@ class PeeWeeMessageFactory(AbstractMessageFactory):
             'peewee.sqlite' db.
         """
         message = PeeWeeMessage("peewee.sqlite")
+        return message
+
+class JSONMessageFactory(AbstractMessageFactory):
+    def buildMessage(self) -> JSONMessage:
+        """builds and return a JSON Message implementation
+
+        Returns:
+            JSONMessage: already initialized PeeWeeMessage pointing to
+            'database.json' file.
+        """
+        message = JSONMessage("/database.json")
         return message
