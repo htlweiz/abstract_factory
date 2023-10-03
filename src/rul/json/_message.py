@@ -6,7 +6,7 @@ from typing import List
 
 import json
 from .._message import AbstractMessage
-from ._model import JSONMessage
+from ._model import JSONModel
 
 class JSONMessage(AbstractMessage):
     def __init__(self, db_file: str):
@@ -24,19 +24,19 @@ class JSONMessage(AbstractMessage):
             List[object]: list of message representative objects in form:
                           { "id": id, "header": header, "body": body }
         """
+
         return_value = []
         file = open(self._db)
         data = json.load(file)
-        for i in data:
-            # see how the message is built
-            print(i)
-        #for message in JSONMessage.select():
-        #    return_value.append(
-        #        {"id": message.id, "header": message.header, "body": message.body}
-        #    )
+        for line in data:
+            return_value.append(
+                {"id": line["id"], "header": line["header"], "body": line["body"]}
+            )
         return return_value
 
-    def postMessage(self, header, body):
+
+
+    def postMessage(self, header: str, body: str) -> None:
         """Post new message
 
         Args:
@@ -44,12 +44,14 @@ class JSONMessage(AbstractMessage):
             body (str): message body text
         """
 
-        # read input
-        # read id of last message
-        # create new id with old_id +1 
-        # add new entry
-        # save
+        current_file = self.getMessages()
+        _id = int(current_file[-1]["id"]) + 1
 
-        message = JSONMessage(header, body)
-        with open(self._db, 'a') as file:
-            json.dump(message, file)
+        with open(self._db, 'r') as file:
+            file_data = json.load(file)
+
+        message = JSONModel(_id, header, body)
+        file_data.append(message.ToDict())
+        
+        with open(self._db, 'w') as file:
+            json.dump(file_data, file, indent=4)

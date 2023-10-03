@@ -52,5 +52,5 @@ class JSONMessageFactory(AbstractMessageFactory):
             JSONMessage: already initialized PeeWeeMessage pointing to
             'database.json' file.
         """
-        message = JSONMessage("/database.json")
+        message = JSONMessage("database.json")
         return message
