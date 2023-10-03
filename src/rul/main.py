@@ -4,14 +4,15 @@
 """
 import random
 
-from rul import AlchemyMessageFactory, PeeWeeMessageFactory
+from rul import AlchemyMessageFactory, JsonMessageFactory, PeeWeeMessageFactory
 
-FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory]
+FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory, JsonMessageFactory]
 
 
 def main():
     """This is the main function called by the package entry point"""
     factory = random.choice(FACTORIES)
+    factory = JsonMessageFactory
 
     message = factory().buildMessage()
 
