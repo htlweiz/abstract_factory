@@ -1,5 +1,5 @@
 """
-Testing the SqlAlchemy Module.
+Testing the PeeWee Module.
 """
 
 import os
