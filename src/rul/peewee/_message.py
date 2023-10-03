@@ -23,7 +23,7 @@ class PeeWeeMessage(AbstractMessage):
         self._db.create_tables([OrmMessage])
 
     def getMessages(self) -> List[object]:
-        """Retrieve all Message
+        """Retrieve all Messages
 
         Returns:
             List[object]: list of message representative objects in form:

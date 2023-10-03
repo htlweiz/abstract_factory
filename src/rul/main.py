@@ -4,9 +4,9 @@
 """
 import random
 
-from rul import AlchemyMessageFactory, PeeWeeMessageFactory, JsonMessageFactory
+from rul import AlchemyMessageFactory, JsonMessageFactory, PeeWeeMessageFactory
 
-FACTORIES = [AlchemyMessageFactory, PeeWeeMessageFactory, JsonMessageFactory]
+FACTORIES = [AlchemyMessageFactory, JsonMessageFactory, PeeWeeMessageFactory]
 
 
 def main():
