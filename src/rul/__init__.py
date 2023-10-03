@@ -1,3 +1,8 @@
+"""
+Module providing message handling components and factories.
+
+"""
+
 from ._factory import (
     AbstractMessageFactory,
     AlchemyMessageFactory,

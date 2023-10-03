@@ -1,6 +1,7 @@
+"""" Json Message Module."""
+
 import json
 from typing import List
-from pathlib import Path
 from .._message import AbstractMessage
 
 
@@ -8,7 +9,7 @@ class JsonMessage(AbstractMessage):
     """
     A class representing message handling using a JSON file.
 
-    This class provides methods to load, save, retrieve, and post messages to a JSON file.
+    This class provides methods to load, save, retrieve, and post messages to JSON-File.
 
     Attributes:
         json_file (str): The path to the JSON file to read/write messages.
@@ -33,22 +34,22 @@ class JsonMessage(AbstractMessage):
             List[dict]: A list of message dictionaries loaded from the JSON file.
         """
         try:
-            with open(self.json_file, 'r') as file:
+            with open(self.json_file, 'r', encoding='utf-8') as file:
                 data = file.read()
                 print("Loaded data from file:", data)
                 messages = json.loads(data)
                 return messages
         except FileNotFoundError:
             return []
-        except json.JSONDecodeError as e:
-            print("Error decoding JSON:", str(e))
+        except json.JSONDecodeError as decode_error:
+            print("Error decoding JSON:", str(decode_error))
             return []
 
     def _save_messages(self):
         """
         Save the current messages to the specified JSON file.
         """
-        with open(self.json_file, 'w') as file:
+        with open(self.json_file, 'w', encoding='utf-8') as file:
             json.dump(self.messages, file, indent=4)
 
     def getMessages(self) -> List[object]:
