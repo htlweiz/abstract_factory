@@ -7,7 +7,7 @@ import pytest
 from rul.peewee import _message
 
 
-# Test SQLite database file
+# Path to SQLite database file
 TEST_DB_FILE = 'test_peewee.sqlite'
 
 
