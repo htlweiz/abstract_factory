@@ -2,10 +2,13 @@
 
 @author Robert Ulmer
 """
-from abc import ABC, abstractmethod
+import json
 
+from abc import ABC, abstractmethod
 from rul.peewee import PeeWeeMessage
 from rul.sqlalchemy import AlchemyMessage
+from abc import ABC, abstractmethod
+from ._message import JsonMessage  # Importieren Sie die JsonMessage-Klasse aus message.py
 
 
 class AbstractMessageFactory(ABC):
@@ -42,3 +45,24 @@ class PeeWeeMessageFactory(AbstractMessageFactory):
         """
         message = PeeWeeMessage("peewee.sqlite")
         return message
+
+
+class AbstractMessageFactory(ABC):
+    """
+    Abstract Factory
+    """
+
+    @abstractmethod
+    def buildMessage(self):
+        """Factory interface"""
+        pass
+
+class JsonMessageFactory(AbstractMessageFactory):
+    def buildMessage(self):
+        message = JsonMessage("messages.json")  # Verwenden Sie eine JSON-Datei als Datenbank
+        message.initialize()
+        return message
+
+# Weitere Factory-Implementierungen...
+
+# Rest des Codes bleibt unverändert
