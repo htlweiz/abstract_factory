@@ -7,7 +7,7 @@ import pytest
 from rul.sqlalchemy import AlchemyMessage
 
 
-# Test SQLite database file
+# Path to SQLite database file
 TEST_DB_FILE = "test_messages.db"
 
 
