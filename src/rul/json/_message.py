@@ -13,6 +13,9 @@ class JsonMessage(AbstractMessage):
         """
         self.json_file = json_file
 
+    def initialize(self):
+        open(self.json_file, "w")
+
     def getMessages(self) -> List[object]:
         pass
 
