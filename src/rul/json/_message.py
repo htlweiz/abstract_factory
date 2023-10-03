@@ -27,8 +27,10 @@ class JsonMessage(AbstractMessage):
                           { "id": id, "header": header, "body": body }
         """
         with open(self.json_file, "r") as openfile:
-            messages = json.load(openfile)
-
+            try:
+                messages = json.load(openfile)
+            except json.JSONDecodeError:
+                return []
         return messages
 
     def postMessage(self, header: str, body: str) -> None:
@@ -39,13 +41,21 @@ class JsonMessage(AbstractMessage):
             body (str): message body text
         """
 
+        old_msg = self.getMessages()
+
         new_msg = {
-            "id": 0,
+            "id": self._new_id(),
             "header": header,
             "body": body
         }
 
-        json_dump = json.dumps(new_msg)
+        old_msg.append(new_msg)
 
         with open(self.json_file, "w") as writefile:
-            writefile.write(json_dump)
+            writefile.write(str(old_msg).replace("'", "\""))
+
+    def _new_id(self):
+        msg = self.getMessages()
+        if len(msg) <= 0:
+            return 0
+        return msg[-1]["id"] + 1
