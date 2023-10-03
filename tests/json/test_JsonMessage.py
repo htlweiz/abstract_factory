@@ -6,7 +6,6 @@ def test_init():
     jsonMsg = JsonMessage("test.json")
     assert jsonMsg
     assert type(jsonMsg) == JsonMessage
-    os.remove("test.json")
 
 
 def test_initialize():
@@ -30,11 +29,9 @@ def test_getMessage_multiple():
     jsonMsg = JsonMessage("test.json")
     jsonMsg.initialize()
     with open("test.json", "w") as writefile:
-        writefile.write("[{\"id\": 0, \"header\": \"Head1\", \"body\": \"Body1\"}, \
-{\"id\": 1, \"header\": \"Head2\", \"body\": \"Body2\"}]")
+        writefile.write("[{\"id\": 0, \"header\": \"Head1\", \"body\": \"Body1\"}, {\"id\": 1, \"header\": \"Head2\", \"body\": \"Body2\"}]")  # noqa: E501
     msg = jsonMsg.getMessages()
-    assert msg == [{"id": 0, "header": "Head1", "body": "Body1"},
-                   {"id": 1, "header": "Head2", "body": "Body2"}]
+    assert msg == [{"id": 0, "header": "Head1", "body": "Body1"}, {"id": 1, "header": "Head2", "body": "Body2"}]  # noqa: E501
     os.remove("test.json")
 
 
@@ -50,8 +47,7 @@ def test_postMessage():
     jsonMsg.postMessage("Head2", "Body2")
     with open("test.json", "r") as outfile:
         content = outfile.read()
-    assert content == "[{\"id\": 0, \"header\": \"Head1\", \"body\": \"Body1\"}, \
-{\"id\": 1, \"header\": \"Head2\", \"body\": \"Body2\"}]"
+    assert content == "[{\"id\": 0, \"header\": \"Head1\", \"body\": \"Body1\"}, {\"id\": 1, \"header\": \"Head2\", \"body\": \"Body2\"}]"  # noqa: E501
 
     os.remove("test.json")
 
