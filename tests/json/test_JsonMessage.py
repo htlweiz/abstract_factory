@@ -16,13 +16,25 @@ def test_initialize():
     os.remove("test.json")
 
 
-def test_getMessage():
+def test_getMessage_single():
     jsonMsg = JsonMessage("test.json")
     jsonMsg.initialize()
     with open("test.json", "w") as writefile:
         writefile.write("[{\"id\": 0, \"header\": \"Head\", \"body\": \"Body\"}]")
     msg = jsonMsg.getMessages()
     assert msg == [{"id": 0, "header": "Head", "body": "Body"}]
+    os.remove("test.json")
+
+
+def test_getMessage_multiple():
+    jsonMsg = JsonMessage("test.json")
+    jsonMsg.initialize()
+    with open("test.json", "w") as writefile:
+        writefile.write("[{\"id\": 0, \"header\": \"Head1\", \"body\": \"Body1\"}, \
+{\"id\": 1, \"header\": \"Head2\", \"body\": \"Body2\"}]")
+    msg = jsonMsg.getMessages()
+    assert msg == [{"id": 0, "header": "Head1", "body": "Body1"},
+                   {"id": 1, "header": "Head2", "body": "Body2"}]
     os.remove("test.json")
 
 
