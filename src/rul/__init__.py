@@ -1,7 +1,7 @@
 from ._factory import (
     AbstractMessageFactory,
     AlchemyMessageFactory,
-    JsonMessageFactory,
+    TinyMessageFactory,
     PeeWeeMessageFactory,
 )
 from ._message import AbstractMessage
@@ -11,5 +11,5 @@ __exports__ = [
     AbstractMessageFactory,
     AlchemyMessageFactory,
     PeeWeeMessageFactory,
-    JsonMessageFactory
+    TinyMessageFactory
 ]

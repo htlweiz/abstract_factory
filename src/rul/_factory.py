@@ -4,9 +4,9 @@
 """
 from abc import ABC, abstractmethod
 
-from rul.json import JsonMessage
 from rul.peewee import PeeWeeMessage
 from rul.sqlalchemy import AlchemyMessage
+from rul.tiny import TinyMessage
 
 
 class AbstractMessageFactory(ABC):
@@ -45,13 +45,13 @@ class PeeWeeMessageFactory(AbstractMessageFactory):
         return message
 
 
-class JsonMessageFactory(AbstractMessageFactory):
-    def buildMessage(self) -> JsonMessage:
+class TinyMessageFactory(AbstractMessageFactory):
+    def buildMessage(self) -> TinyMessage:
         """builds and return a Json Message implementation
 
         Returns:
             JsonMessage: already initialized JsonMessage pointing to
             'messages.json' file.
         """
-        message = JsonMessage("messages.json")
+        message = TinyMessage("messages.json")
         return message
