@@ -28,7 +28,7 @@ class JsonMessage(AbstractMessage):
 
     def save(self):
         with open(self.filename, 'w') as file:
-            json.dump(self.data, file)
+            json.dump(self.data, file, indent=6)
 
     def getMessages(self) -> List[object]:
         return list(self.data.values())
