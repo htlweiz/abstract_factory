@@ -4,9 +4,9 @@
 """
 import random
 
-from rul import AlchemyMessageFactory, PeeWeeMessageFactory
+from rul import AlchemyMessageFactory, PeeWeeMessageFactory, JsonMessageFactory
 
-FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory]
+FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory, JsonMessageFactory]
 
 
 def main():
@@ -21,3 +21,4 @@ def main():
         if int(msg["id"]) > max_id:
             max_id = int(msg["id"])
     message.postMessage("Subj %d" % (max_id + 1), "body %d" % (max_id + 1))
+    
