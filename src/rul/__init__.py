@@ -1,7 +1,13 @@
+"""
+Module providing message handling components and factories.
+
+"""
+
 from ._factory import (
     AbstractMessageFactory,
     AlchemyMessageFactory,
     PeeWeeMessageFactory,
+    JsonMessageFactory
 )
 from ._message import AbstractMessage
 
@@ -10,4 +16,5 @@ __exports__ = [
     AbstractMessageFactory,
     AlchemyMessageFactory,
     PeeWeeMessageFactory,
+    JsonMessageFactory
 ]
