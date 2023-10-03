@@ -13,7 +13,9 @@ class JsonMessage(AbstractMessage):
         """
         self.json_file = json_file
 
-    def initialize(self):
+    def initialize(self) -> None:
+        """Create Json File if not exists.
+        """
         with open(self.json_file, "w"):
             pass
 
