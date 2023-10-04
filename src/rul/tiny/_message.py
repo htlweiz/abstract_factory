@@ -20,13 +20,8 @@ class TinyMessage(AbstractMessage):
             List[object]: list of message representative objects in form:
                           { "id": id, "header": header, "body": body }
         """
-        messages = list(map(lambda x: {
-            "id": x.doc_id,
-            "header": x["header"],
-            "body": x["body"]},
-            self._db.all()))
 
-        return messages
+        return self._db.all()
 
     def postMessage(self, header: str, body: str) -> None:
         """Post new message
@@ -36,4 +31,5 @@ class TinyMessage(AbstractMessage):
             body (str): message body text
         """
 
-        self._db.insert({"header": header, "body": body})
+        message_id = self._db.insert({"header": header, "body": body})
+        self._db.update({"id": message_id}, doc_ids=[message_id])
