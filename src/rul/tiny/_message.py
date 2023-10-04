@@ -1,4 +1,4 @@
-"""Concrete Json implementation of Message
+"""Concrete TinyDB implementation of Message
 
 @author Matthias Derler
 """
