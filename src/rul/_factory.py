@@ -53,6 +53,6 @@ class JsonMessageFactory(AbstractMessageFactory):
             JsonMessage: already initialized JsonMessage pointing to
                          'json_db.json' db.
         """
-        message = JsonMessage("json_db.json")
-        message.initialize()
+        message = JsonMessage("db.json")
+        # message.initialize()
         return message

@@ -11,8 +11,7 @@ FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory, JsonMessageFactory]
 
 def main():
     """This is the main function called by the package entry point"""
-    factory = random.choice(FACTORIES)
-    print(factory)
+    factory = JsonMessageFactory
     message = factory().buildMessage()
 
     max_id = 0

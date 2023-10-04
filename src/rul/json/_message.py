@@ -13,12 +13,6 @@ class JsonMessage(AbstractMessage):
         """
         self.json_file = json_file
 
-    def initialize(self) -> None:
-        """Create Json File if not exists.
-        """
-        with open(self.json_file, "w"):
-            pass
-
     def getMessages(self) -> List[object]:
         """Retrieve all Message
 
@@ -27,9 +21,11 @@ class JsonMessage(AbstractMessage):
                           { "id": id, "header": header, "body": body }
         """
         with open(self.json_file, "r") as openfile:
+            openfile.seek(0)
             try:
                 messages = json.load(openfile)
-            except json.JSONDecodeError:
+            except json.JSONDecodeError as e:
+                print(e)
                 return []
         return messages
 

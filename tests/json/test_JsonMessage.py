@@ -8,13 +8,6 @@ def test_init():
     assert type(jsonMsg) == JsonMessage
 
 
-def test_initialize():
-    jsonMsg = JsonMessage("test.json")
-    jsonMsg.initialize()
-    assert os.path.exists("test.json")
-    os.remove("test.json")
-
-
 def test_getMessage_single():
     jsonMsg = JsonMessage("test.json")
     jsonMsg.initialize()
