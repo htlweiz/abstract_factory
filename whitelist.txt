@@ -1,3 +1,6 @@
+conftest
+isfile
+jsonfile
 Orm
 rul
 sqlalchemy
