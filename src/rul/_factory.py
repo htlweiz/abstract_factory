@@ -46,6 +46,8 @@ class PeeWeeMessageFactory(AbstractMessageFactory):
 
 
 class JsonMessageFactory(AbstractMessageFactory):
+    _jsonfile_path = "data.json"
+
     def buildMessage(self) -> JsonMessage:
         """builds and returns a Json Message implementation
 
@@ -53,5 +55,5 @@ class JsonMessageFactory(AbstractMessageFactory):
             JsonMessage: already initialized JsonMessage pointing to
             'data.json' file.
         """
-        message = JsonMessage("data.json")
+        message = JsonMessage(self._jsonfile_path)
         return message
