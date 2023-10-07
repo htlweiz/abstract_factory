@@ -2,6 +2,7 @@
 Model for JSON database.
 """
 
+
 class JSONModel():
     def __init__(self, _id, header, body) -> None:
         self.id = _id

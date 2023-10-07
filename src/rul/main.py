@@ -6,7 +6,7 @@ import random
 
 from rul import AlchemyMessageFactory, PeeWeeMessageFactory, JSONMessageFactory
 
-FACTORIES = [JSONMessageFactory] # PeeWeeMessageFactory, AlchemyMessageFactory, 
+FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory, JSONMessageFactory]
 
 
 def main():
