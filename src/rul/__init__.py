@@ -1,3 +1,7 @@
+""" Init
+
+@author Robert Ulmer
+"""
 from ._factory import (
     AbstractMessageFactory,
     AlchemyMessageFactory,

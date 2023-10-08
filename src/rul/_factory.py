@@ -14,13 +14,17 @@ class AbstractMessageFactory(ABC):
     """
 
     @abstractmethod
-    def buildMessage(self):
+    def build_message(self):
         """factory interface"""
-        pass
+
 
 
 class AlchemyMessageFactory(AbstractMessageFactory):
-    def buildMessage(self) -> AlchemyMessage:
+    """
+    AlchemyMessage Factory
+    """
+
+    def build_message(self) -> AlchemyMessage:
         """builds and returns a SQLAlchemy Message implementation
 
         Returns:
@@ -33,7 +37,11 @@ class AlchemyMessageFactory(AbstractMessageFactory):
 
 
 class PeeWeeMessageFactory(AbstractMessageFactory):
-    def buildMessage(self) -> PeeWeeMessage:
+    """
+    PeeWeeMessageFactory
+    """
+
+    def build_message(self) -> PeeWeeMessage:
         """builds and return a PeeWee Message implementation
 
         Returns:
