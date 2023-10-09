@@ -1,11 +1,12 @@
 """ In this module the factories are defined
 
-@author Robert Ulmer
+@author Robert Ulmer | Lukas Lackner
 """
 from abc import ABC, abstractmethod
 
 from rul.peewee import PeeWeeMessage
 from rul.sqlalchemy import AlchemyMessage
+from rul.json import JSONMessage
 
 
 class AbstractMessageFactory(ABC):
@@ -41,4 +42,16 @@ class PeeWeeMessageFactory(AbstractMessageFactory):
             'peewee.sqlite' db.
         """
         message = PeeWeeMessage("peewee.sqlite")
+        return message
+
+
+class JSONMessageFactory(AbstractMessageFactory):
+    def buildMessage(self) -> JSONMessage:
+        """builds and return a JSON Message implementation
+
+        Returns:
+            JSONMessage: already initialized JSON pointing to
+            'json.json' file.
+        """
+        message = JSONMessage("json.json")
         return message
