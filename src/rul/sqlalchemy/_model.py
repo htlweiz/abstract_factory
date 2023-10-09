@@ -8,10 +8,16 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
-    pass
+    """
+    Base
+    """
 
 
 class Message(Base):
+    """
+    Message
+    """
+
     __tablename__ = "alchemymessage"
 
     message_id: Mapped[int] = mapped_column(primary_key=True)

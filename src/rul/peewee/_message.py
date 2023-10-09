@@ -1,7 +1,8 @@
-"""Concrete PeeWee implementation of Message
+""" Concrete PeeWee implementation of Message
 
 @author Robert Ulmer
 """
+
 from typing import List
 
 from peewee import SqliteDatabase
@@ -11,6 +12,10 @@ from ._model import OrmMessage
 
 
 class PeeWeeMessage(AbstractMessage):
+    """
+    PeeWeeMessage
+    """
+
     def __init__(self, db_file: str):
         """initialize Message and bind to db
 
@@ -22,7 +27,7 @@ class PeeWeeMessage(AbstractMessage):
         self._db.connect()
         self._db.create_tables([OrmMessage])
 
-    def getMessages(self) -> List[object]:
+    def get_messages(self) -> List[object]:
         """Retrieve all Message
 
         Returns:
@@ -36,7 +41,7 @@ class PeeWeeMessage(AbstractMessage):
             )
         return return_value
 
-    def postMessage(self, header, body):
+    def post_message(self, header, body):
         """Post new message
 
         Args:

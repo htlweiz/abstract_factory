@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 
 from rul.peewee import PeeWeeMessage
 from rul.sqlalchemy import AlchemyMessage
+from rul.json import JsonMessage
 
 
 class AbstractMessageFactory(ABC):
@@ -14,13 +15,17 @@ class AbstractMessageFactory(ABC):
     """
 
     @abstractmethod
-    def buildMessage(self):
+    def build_message(self):
         """factory interface"""
-        pass
+
 
 
 class AlchemyMessageFactory(AbstractMessageFactory):
-    def buildMessage(self) -> AlchemyMessage:
+    """
+    AlchemyMessage Factory
+    """
+
+    def build_message(self) -> AlchemyMessage:
         """builds and returns a SQLAlchemy Message implementation
 
         Returns:
@@ -33,7 +38,11 @@ class AlchemyMessageFactory(AbstractMessageFactory):
 
 
 class PeeWeeMessageFactory(AbstractMessageFactory):
-    def buildMessage(self) -> PeeWeeMessage:
+    """
+    PeeWeeMessageFactory
+    """
+
+    def build_message(self) -> PeeWeeMessage:
         """builds and return a PeeWee Message implementation
 
         Returns:
@@ -41,4 +50,20 @@ class PeeWeeMessageFactory(AbstractMessageFactory):
             'peewee.sqlite' db.
         """
         message = PeeWeeMessage("peewee.sqlite")
+        return message
+
+
+class JsonMessageFactory(AbstractMessageFactory):
+    """
+    JsonMessageFactory
+    """
+
+    def build_message(self) -> JsonMessage:
+        """builds and return a Json Message implementation
+
+        Returns:
+            JsonMessage: already initialized JsonMessage pointing to
+            'data.json'.
+        """
+        message = JsonMessage("data.json")
         return message

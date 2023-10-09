@@ -13,8 +13,13 @@ from ._model import Base, Message
 
 
 class AlchemyMessage(AbstractMessage):
+    """
+    AlchemyMessage
+    """
+
     def __init__(self):
         self._init = False
+        self._engine = None
 
     def initialize(self, db_name: str) -> None:
         """Initialize system and bind to db
@@ -26,7 +31,7 @@ class AlchemyMessage(AbstractMessage):
         Base.metadata.create_all(self._engine)
         self._init = True
 
-    def getMessages(self) -> List[object]:
+    def get_messages(self) -> List[object]:
         """Retrieve all Message
 
         Returns:
@@ -49,7 +54,7 @@ class AlchemyMessage(AbstractMessage):
             )
         return return_values
 
-    def postMessage(self, header: str, body: str) -> None:
+    def post_message(self, header: str, body: str) -> None:
         """Post new message
 
         Args:
