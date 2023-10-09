@@ -27,7 +27,7 @@ class AlchemyMessage(AbstractMessage):
         self._init = True
 
     def getMessages(self) -> List[object]:
-        """Retrieve all Message
+        """Retrieve all Messages
 
         Returns:
             List[object]: list of message representative objects in form:
