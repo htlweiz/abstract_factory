@@ -1,12 +1,9 @@
-""" Main Module
-
-@author Robert Ulmer
-"""
 import random
+import json
 
-from rul import AlchemyMessageFactory, PeeWeeMessageFactory
+from rul import AlchemyMessageFactory, PeeWeeMessageFactory, JsonMessageFactory
 
-FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory]
+FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory, JsonMessageFactory]
 
 
 def main():
@@ -20,4 +17,12 @@ def main():
         print("Message %s" % msg)
         if int(msg["id"]) > max_id:
             max_id = int(msg["id"])
-    message.postMessage("Subj %d" % (max_id + 1), "body %d" % (max_id + 1))
+    
+    new_subject = "Subj %d" % (max_id + 1)
+    new_body = "body %d" % (max_id + 1)
+    
+    message.postMessage(new_subject, new_body)
+    message.saveMessagesToFile()
+    
+if __name__ == "__main__":
+    main()
