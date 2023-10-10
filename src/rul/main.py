@@ -1,6 +1,6 @@
 """ Main Module
 
-@author Robert Ulmer
+@author Simon Posch
 """
 import random
 

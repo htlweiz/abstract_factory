@@ -1,6 +1,6 @@
 """ Model for sqlalchemy message
 
-@author Robert Ulmer
+@author Simon Posch
 """
 
 from sqlalchemy import String

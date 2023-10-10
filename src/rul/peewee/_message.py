@@ -1,6 +1,6 @@
 """Concrete PeeWee implementation of Message
 
-@author Robert Ulmer
+@author Simon Posch
 """
 from typing import List
 
