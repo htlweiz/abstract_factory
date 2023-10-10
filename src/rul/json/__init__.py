@@ -1,3 +1,3 @@
-from ._message import JsonMessage
+from ._message import JSONMessage 
 
-__exports__ = [JsonMessage]
+__exports__ = [JSONMessage]

@@ -45,6 +45,6 @@ class PeeWeeMessageFactory(AbstractMessageFactory):
         return message
 
 class JsonMessageFactory(AbstractMessageFactory):
-    def buildMessage(self) -> JsonMessage:
-        message = JsonMessage("message.json")
+    def buildMessage(self) -> JSONMessage:
+        message = JSONMessage("message.json")
         return message
