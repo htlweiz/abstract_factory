@@ -1,6 +1,6 @@
 """ This is the abstract message module
 
-@author Robert Ulmer
+@author Simon Posch
 """
 
 from abc import ABC, abstractmethod
