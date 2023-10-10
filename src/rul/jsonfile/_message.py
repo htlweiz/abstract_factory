@@ -1,23 +1,22 @@
-from .._message import AbstractMessage
-
 import json
 import os
 
 from typing import List
 
+from .._message import AbstractMessage
+
 class JsonMessage(AbstractMessage):
-    def __init__(self):
+    def __init__(self, db_file: str):
         self._init = False
-        self.jsonfile = None
+        self.jsonfile = db_file
 
 
-    def initialize(self, db_name: str) -> None:
+    def initialize(self) -> None:
         """Initialize system and bind to db
 
         Args:
             jsonfile (str): JSON file to bind to.
         """
-        self.jsonfile = f"{db_name}.json"
         if not os.path.isfile(self.jsonfile):
             f = open(self.jsonfile, "w+")
         self._init = True
