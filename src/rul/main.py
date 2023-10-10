@@ -1,12 +1,8 @@
-""" Main Module
-
-@author Robert Ulmer
-"""
 import random
 
-from rul import AlchemyMessageFactory, PeeWeeMessageFactory
+from rul import AlchemyMessageFactory, PeeWeeMessageFactory, JSONMessageFactory
 
-FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory]
+FACTORIES = [PeeWeeMessageFactory, AlchemyMessageFactory, JSONMessageFactory]
 
 
 def main():
